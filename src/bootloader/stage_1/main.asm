@@ -34,6 +34,8 @@ EBR_VOL_LABEL: db 'CHESS OS   '
 EBR_SYS_ID: db 'FAT12   '
 
 
+KERNEL_LOAD_SEGMENT equ 0x2000
+KERNEL_LOAD_OFFSET equ 0
 
 
 _start:
@@ -347,23 +349,18 @@ disk_reset:
 	popa
 	ret
 
-.halt:
-	cli
-	jmp .halt
 
 
 kernel.bin: db 'STAGE2  BIN'
 root_LBA: dw 0
 root_size: dw 0
-loadmsg: db 'loading...', ENDL, 0
-Kernel_no: db 'kernel not found', ENDL, 0
+loadmsg: db 'loading stage 2...', ENDL, 0
+Kernel_no: db 'stage2 not found', ENDL, 0
 Read_Failed:db 'Cant read disk', ENDL, 0
 Kernel_cluster: dw 0
 times 510-($-$$) db 0
 dw 0AA55h
 
 
-KERNEL_LOAD_SEGMENT equ 0x2000
-KERNEL_LOAD_OFFSET equ 0
 
 buffer:
