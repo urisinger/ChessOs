@@ -34,12 +34,12 @@ EBR_VOL_LABEL: db 'CHESS OS   '
 EBR_SYS_ID: db 'FAT12   '
 
 
-KERNEL_LOAD_SEGMENT equ 0x2000
-KERNEL_LOAD_OFFSET equ 0x0
+KERNEL_LOAD_SEGMENT equ 0x20000
+KERNEL_LOAD_OFFSET equ 0
 
 
 _start:
-
+	 
 	;setup segmenets
 	mov ax, 0
 	mov ds, ax
@@ -56,16 +56,13 @@ _start:
 .after:
 	;read from flappy disk
 	mov dl, [EBR_DRIVE_NUMBER]	;set dl to current drive number
-	
-
-
 
 	;print starting message
 	mov si, loadmsg
 	call puts
 	
 	
-	;find root dir LBA = rieseerved + num_fats * sectors_per_fat
+	;find root dir LBA = reseerved + num_fats * sectors_per_fat
 	mov ax, [BPB_SECTORS_PER_FAT]		;compute the lba of the root dir
 	mov bl, [BPB_FILE_ALLOCATION_COUNT] 
 	xor bh, bh
@@ -363,6 +360,7 @@ Read_Failed:db 'Cant read disk', ENDL, 0
 Kernel_cluster: dw 0
 times 510-($-$$) db 0
 dw 0AA55h
+
 
 
 buffer:
