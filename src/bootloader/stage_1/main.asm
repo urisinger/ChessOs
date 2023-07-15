@@ -7,7 +7,7 @@ bits 16
 ;
 
 %define ENDL 0x0D, 0x0A
-jmp short _start
+jmp  _start
 nop
 
 BPB_OEM_ID: db 'MSWIN4.1'
@@ -58,22 +58,19 @@ _start:
 
 
 	;print starting message
-	mov si, loadmsg
-	call puts
+	;mov si, loadmsg
+	;call puts
 
-	
+	call load_file_root	
 	mov bx, second_stage_start
-	mov cl, 1
+	mov cx, 1
 	mov ax, 1
 
 	call disk_read
 
 	jmp second_stage_start
 
-floppy_error:
-	mov si,	Read_Failed
-	call puts
-	jmp wait_for_reset
+
 
 
 
@@ -84,34 +81,127 @@ wait_for_reset:
 	jmp _start
 
 
-;prints a string
-puts:
-	;save regsiters which are going to be modified
-	push si
-	push ax
-
-.loop:
-	lodsb				;load into al
-	or al, al			;check if next char is null
-	jz .done
-
-	;call bios interupt
-	mov ah, 0x0E
-	mov bh, 0
-	INT 0x10
-	
-	jmp .loop
-
-;return fromputs
-.done:
-	pop ax 
-	pop si
-	ret
-
 
 ;
 ;Disk routines
 ;
+
+;
+;loads file in root file dir
+; Params: 
+;	-si pointer to start of filname
+;	-es:bx where to load file
+;
+load_file_root:
+	push si
+	push ax
+	push bx
+	push es
+	push dx
+
+	;find start of root dir
+	mov ax, [BPB_SECTORS_PER_FAT]
+	mov bx, [BPB_FILE_ALLOCATION_COUNT]
+	mul bx
+	add ax, [BPB_RESERVED_SECTORS]
+	
+	mov [root_LBA], ax
+	;find size of root dir
+	mov ax, [BPB_DIR_ENTRIES_COUNT]
+	shl ax, 5
+	xor dx, dx
+	div dword [BPB_BYTES_PER_SECTOR]
+	
+
+	test dx, dx
+	jz .load_file_after
+	inc ax
+
+.load_file_after:
+
+	mov [root_size], ax
+
+	mov cx, ax
+	mov ax, [root_LBA]
+	mov dl, [EBR_DRIVE_NUMBER]
+	mov bx, buffer_seg
+	mov es, bx
+	xor bx, bx
+
+	call disk_read
+	
+.find:
+
+	mov di, bx
+	xor bx, bx
+	
+	mov cx, 11
+	push di
+	repe cmpsb 
+	pop di
+	je .found
+
+	add di, 32
+	inc bx
+
+	cmp bx, [BPB_DIR_ENTRIES_COUNT]
+	jl .find
+
+.not_found:
+	mov si, Kernel_no
+	call puts
+	
+	jmp wait_for_reset
+
+.found:
+	mov ax, [di + 26]
+	mov [Kernel_cluster], ax
+	
+	mov ax, [BPB_RESERVED_SECTORS]
+	xor bx, bx
+	mov cl, [BPB_SECTORS_PER_FAT]
+	mov dl, [EBR_DRIVE_NUMBER]
+	call disk_read
+	
+	xor bx, bx
+	mov es, bx
+		
+	mov bx, second_stage_start
+
+.load_file_loop:
+	mov ax, [Kernel_cluster]
+	add ax, [root_LBA]
+	add ax, [root_size]
+
+	mov cl, 1
+	mov dl, [EBR_DRIVE_NUMBER]
+	call disk_read
+	
+	add bx, [BPB_BYTES_PER_SECTOR]
+
+	mov ax, [Kernel_cluster]
+	mov cx, 2
+	mul cx
+	mov si, ax
+	mov ax, [es:si]
+
+	cmp ax, 0xFFF8
+	jae .read_finish
+
+	mov [Kernel_cluster], ax
+	jmp .load_file_loop
+
+.read_finish:
+
+	pop dx
+	pop es
+	pop bx
+	pop ax
+	pop si
+	ret
+
+	
+
 
 
 ;
@@ -135,7 +225,6 @@ disk_read:
 	mov ah, 02h		;set the operation to do
 
 	mov di, 3		;times to retry
-	jmp .retry
 
 .retry:
 	pusha
@@ -152,7 +241,12 @@ disk_read:
 	jnz .retry
 
 .fail:
-	jmp floppy_error
+	jmp .disk_error
+
+.disk_error:
+	mov si,	Read_Failed
+	call puts
+	jmp wait_for_reset
 
 .done:
 	popa
@@ -173,7 +267,7 @@ disk_read:
 	mov ah, 0
 	stc
 	int 13h
-	jc floppy_error
+	jc .disk_error
 	popa
 	ret
 
@@ -215,8 +309,35 @@ disk_read:
 
 
 
+;prints a string
+; Params:
+;	-si pointer to string to read
+;
+puts:
+	;save regsiters which are going to be modified
+	push si
+	push ax
 
-kernel.bin: db 'STAGE2  BIN'
+.loop:
+	lodsb				;load into al
+	or al, al			;check if next char is null
+	jz .done
+
+	;call bios interupt
+	mov ah, 0x0E
+	mov bh, 0
+	INT 0x10
+	
+	jmp .loop
+
+;return fromputs
+.done:
+	pop ax 
+	pop si
+	ret
+
+buffer_seg equ 0x2000
+STAGE2: db 'STAGE2  BIN'
 root_LBA: dw 0
 root_size: dw 0
 loadmsg: db 'loading stage 2...', ENDL, 0
@@ -328,4 +449,3 @@ puts32:
 	
 messageText: db 'hello! loading kernelaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 0
 times 512-($-second_stage_start) db 0
-buffer:
