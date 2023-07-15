@@ -4,18 +4,20 @@ SRC_DIR = src
 BUILD_DIR = build
 CFLAGS = -ffreestanding -fshort-wchar -g
 	
-.PHONY: all floppy_image kernel bootloader clean always
+.PHONY: all disk_image kernel bootloader clean always
 
 #
 #Build floppy image
 #
-floppy_image: $(BUILD_DIR)/main_floppy.img
+disk_image: $(BUILD_DIR)/main_disk.img
 
-$(BUILD_DIR)/main_floppy.img: bootloader
-	dd if=/dev/zero of=$(BUILD_DIR)/main_floppy.img bs=512 count=2880
-	mkfs.fat -F 12 -n "BOOT" $(BUILD_DIR)/main_floppy.img
-	dd if=$(BUILD_DIR)/bootloader/stage_1/main.bin of=$(BUILD_DIR)/main_floppy.img conv=notrunc
-	mcopy -i $(BUILD_DIR)/main_floppy.img $(BUILD_DIR)/bootloader/stage_2/main.bin "::stage2.bin"
+$(BUILD_DIR)/main_disk.img: bootloader
+	#cp $(BUILD_DIR)/bootloader/stage_2/main.bin $(BUILD_DIR)/main_floppy.img
+	#truncate -s 1440k $(BUILD_DIR)/main_floppy.img
+	dd if=/dev/zero of=$(BUILD_DIR)/main_disk.img bs=512 count=32768
+	mkfs.fat -F 16 -n "CHESSOS" $(BUILD_DIR)/main_disk.img -R 2 -M 0xF8
+	dd if=$(BUILD_DIR)/bootloader/stage_1/main.bin bs=2 count=481 skip=31 seek=31 of=$(BUILD_DIR)/main_disk.img conv=notrunc
+	mcopy -i $(BUILD_DIR)/main_disk.img $(BUILD_DIR)/bootloader/stage_2/main.bin "::stage2.bin"
 #
 #bootloader
 #

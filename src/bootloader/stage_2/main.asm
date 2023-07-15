@@ -1,104 +1,106 @@
-org 0x0
+org 0x7e00 
 
 
-
-CODE_SEG equ kernel_code_descriptor - GDT_Start
-DATA_SEG equ kernel_data_descriptor - GDT_Start
-start:
+second_stage_start:
 	[bits 16]
-	;print loading msg
-	mov si, loading
-	call puts16
+	
+	mov ah, 0
+	int 10h
 
 	cli
-	lgdt [GDT_Descriptor]
+	call setGdt
 	mov eax, cr0
-	or al, 1
+	or ax, 1
 	mov cr0, eax
 
-	jmp CODE_SEG:protected_main
+	jmp 08h:protected_main
+
+gdtr: dw 0 ; For limit storage
+     dd 0 ; For base storage
+ 
+setGdt:
+   xor eax, eax
+   mov ax, ds
+   shl eax, 4
+   add eax, GDT_START
+   mov [gdtr + 2], eax
+   mov eax, GDT_END
+   sub eax, GDT_START
+   mov [gdtr], ax
+   lgdt [gdtr]
+   ret
 
 
-;prints a string
-puts16:
-	[bits 16]
-	;save regsiters which are going to be modified
+GDT_START:
+	dq 0
 
-	push si
-	push ax
+	dw 0FFFFh
+	dw 0x0000
+	db 0
+	db 10011010b
+	db 11001111b
+	db 0
 
-.loop:
-	[bits 16]
-	lodsb				;load into al
-	or al, al			;check if next char is null
-	jz .done
-
-	;call bios interupt
-	mov ah, 0x0e
-	mov bh, 0
-	int 0x10
-	
-	jmp .loop
-
-;return from puts
-.done:
-	[bits 16]
-	pop ax 
-	pop si
-	ret
-
+	dw 0FFFFh
+	dw 0x0000
+	db 0
+	db 10010010b
+	db 11001111b
+	db 0
+GDT_END:
 
 protected_main:
 	[bits 32]
 	
-	hlt
-	hlt
-	mov ax, DATA_SEG
+	mov ax, 010h
 	mov ds, ax
 	mov ss, ax
-
+	
 	;print something to test
-	mov ax, videomem
-	mov es, ax
-	mov bx,0
 
-	mov al, 'A'
-	mov ah, 0x0f
+	mov ah, 0x0a
+	mov esi, loading
+	call puts32
+
+	hlt	
+
+;prints a string
+; Params:
+;	- ds:esi pointer to start of string
+;	- ah color of text
+
+puts32:
+	[bits 32]
+	;save regsiters which are going to be modified
+	push esi
+	push eax
+	push ebx
+
+	mov ebx, 0xb8000
+
+.loop:
+	lodsb	;load into al
+	or al, al			;check if next char is null
+	jz .done
+
+	;call bios interupt
+
+	mov [ebx], ax
+
+	add ebx, 2
+
+	jmp .loop
+
+;return fromputs
+.done:
+	pop ebx
+	pop eax
+	pop esi
+	ret
 	
-	mov [es:bx], ax
 
-
-	hlt
-
-.halt:
-	jmp .halt
 	
-[bits 16]
 %define ENDL 0x0D, 0x0A
-videomem equ 0xb800
-loading: db 'Stage 2 found, loading kernel', ENDL, 0
-
-GDT_Start:
-	null_descriptor:
-		dd 0x0 
-		dd 0x0
-	kernel_code_descriptor:
-		dw 0xffff  ;first 16 bits of limit = 0xfffff
-		dw 0x0000	;first 24 bits of base = 0
-		db 0x0
-		db 10011010b	;prsense, privlge,type props
-		db 11001111b	;other flags(first 4 bits) + limit(last 4 bits)
-		db 0x0
-	kernel_data_descriptor:
-		dw 0xffff  ;first 16 bits of limit = 0xfffff
-		dw 0x0000	;first 24 bits of base = 0
-		db 0x0
-		db 10010010b	;prsense, privlge,type props
-		db 11001111b	;other flags(first 4 bits) + limit(last 4 bits)
-		db 0x0
-GDT_End:
-
-GDT_Descriptor;
-	dw GDT_End - GDT_Start - 1	;size
-	dd GDT_Start	;start
+loading: db 'stage 2 was found, entering protected mode', ENDL,0
+videomem: equ 0xb8000
 
