@@ -1,7 +1,6 @@
 org 0x7C00
 bits 16
 
-
 ;
 ;FAT12 header
 ;
@@ -153,7 +152,6 @@ load_file_root:
 
 	call disk_read
 	mov di, bx
-	xor bx, bx
 
 .find:
 	mov si, STAGE2
@@ -186,7 +184,6 @@ load_file_root:
 	mov dl, [EBR_DRIVE_NUMBER]
 	call disk_read
 	
-	xor bx, bx
 	mov es, bx
 		
 	mov bx, second_stage_start
@@ -251,18 +248,18 @@ disk_read:
 	push ax
 	push cx
 	push di
-	push cx				;save the number of sectors
-	call .lba_to_chs		;compute CHS
-	pop ax				;get the number of sectors to al
+	push si
+	call .move_inputs_to_dap		;compute CHS
 
-	mov ah, 02h		;set the operation to do
+	mov ah, 42h		;set the operation to do
 
 	mov di, 3		;times to retry
 
 .retry:
 	pusha
 	stc
-
+	
+	mov si, dap
 	int 13h
 	jnc .done
 
@@ -279,6 +276,7 @@ disk_read:
 
 .done:
 	popa
+	pop si
 	pop di
 	pop dx
 	pop ax
@@ -300,42 +298,20 @@ disk_read:
 	popa
 	ret
 
-;
-;Converts a LBA adress to a CHS adress
+; Subroutine to move inputs into DAP (Disk Address Packet)
 ; Params:
-;	- ax LBA adress
+;   - ax: LBA address
+;   - cl: number of sectors to read (up to 128)
+;   - es:bx: memory address to store data (buffer)
 ;
-; Returns: 
-;	- cx [bits 0-5] sector number
-;	- cx [bits 6-15] cylinder
-;	- dh head
-;
-.lba_to_chs:
+.move_inputs_to_dap:
 
-	push ax
-	push dx
+    mov [dap+2], cl    ; Store number of sectors in DAP
+    mov word [dap+4], bx    ; Store offset of buffer (es:bx) in DAP
+    mov word [dap+6], es    ; Store segment of buffer (es:bx) in DAP
+    mov word [dap+8], ax    ; Store LBA address in DAP
 
-	xor dx, dx			;dx = 0
-	div	word [BPB_SECTORS_PER_TRACK]		;ax = head = LBA / BPB_SECTORS_PER_TRACK, dx = sector = LBA % BPB_SECTORS_PER_TRACK + 1
-		
-	inc dx
-	mov cx, dx
-
-	xor dx, dx			;dx = 0
-
-	div word [BPB_HEADS]					;ax = (LBA / BPB_SECTORS_PER_TRACK) / BPB_HEADS, dx = (LBA/BPB_SECTORS_PER_TRACK) % BPB_HEADS
-
-	mov dh, dl			;dh = dl = (LBA/BPB_SECTORS_PER_TRACK) % BPB_HEADS
-	mov ch, al			;move lowest 8 bits of ax into ch
-	shl ah, 6			;get the 2 upper bits of ax
-	or cl, ah			;move 
-
-	pop ax
-	mov dl, al
-	pop ax
-	ret
-
-
+    ret
 
 ;prints a string
 ; Params:
@@ -368,10 +344,20 @@ buffer_seg equ 0x2000
 STAGE2: db 'STAGE2  BIN'
 root_LBA: dw 0
 root_size: dw 0
-loadmsg: db 'loading stage 2', ENDL, 0
+loadmsg: db 'loading...', ENDL, 0
 Kernel_no: db 'stage2 not found', ENDL, 0
 Read_Failed:db 'Cant read disk', ENDL, 0
 Kernel_cluster: dw 0
+
+dap:
+	db 10h            ; Size of DAP (16 bytes)
+	db 0              ; Reserved (should be 0)
+	dw 1              ; Number of sectors to read
+	dd 0              ; Offset of buffer (es:bx) to store the data
+	dw 0              ; Segment of buffer (es:bx) to store the data
+	dq 0              ; sectors to read
+
+
 times 510-($-$$) db 0
 dw 0AA55h
 

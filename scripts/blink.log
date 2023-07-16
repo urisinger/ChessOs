@@ -2671,3 +2671,408 @@ I2023-07-16T21:53:25.309301:blink/blinkenlights.c:3366:83154 TUI EXIT
 I2023-07-16T21:53:25.309378:blink/blinkenlights.c:839:83154 TuiCleanup
 I2023-07-16T21:53:25.309420:blink/blinkenlights.c:831:83154 TtyRestore
 I2023-07-16T21:53:25.315431:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T22:59:29.656219:blink/syscall.c:1050:85541 unsupported arch_prctl op 0x3001
+I2023-07-16T22:59:29.658689:blink/syscall.c:5720:85541 missing syscall 0x14e
+I2023-07-16T22:59:29.661934:blink/memorymalloc.c:1296:85541 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T22:59:29.661956:blink/memorymalloc.c:891:85541 host system returned ENOMEM
+I2023-07-16T22:59:29.661966:blink/memorymalloc.c:1296:85541 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T22:59:29.664105:blink/blinkenlights.c:3287:85541 Tui
+I2023-07-16T22:59:29.665511:blink/blinkenlights.c:953:85541 loaded program ../build/main_disk.img
+
+I2023-07-16T22:59:29.665804:blink/blinkenlights.c:770:85541 TuiRejuvinate
+I2023-07-16T22:59:32.915385:blink/blinkenlights.c:3348:85541 TUI INT
+I2023-07-16T22:59:33.922078:blink/blinkenlights.c:3093:85541 ReadKeyboard interrupted
+I2023-07-16T22:59:35.996431:blink/blinkenlights.c:3348:85541 TUI INT
+I2023-07-16T22:59:37.012449:blink/blinkenlights.c:3093:85541 ReadKeyboard interrupted
+I2023-07-16T22:59:37.418055:blink/blinkenlights.c:3201:85541 Exec
+I2023-07-16T22:59:37.418248:blink/blinkenlights.c:3225:85541 BREAK2 007d00
+I2023-07-16T22:59:37.418267:blink/blinkenlights.c:3287:85541 Tui
+I2023-07-16T22:59:37.418294:blink/blinkenlights.c:770:85541 TuiRejuvinate
+I2023-07-16T22:59:42.946740:blink/blinkenlights.c:3201:85541 Exec
+I2023-07-16T22:59:42.947071:blink/blinkenlights.c:3225:85541 BREAK2 007d26
+I2023-07-16T22:59:42.947094:blink/blinkenlights.c:3287:85541 Tui
+I2023-07-16T22:59:42.947121:blink/blinkenlights.c:770:85541 TuiRejuvinate
+I2023-07-16T22:59:45.600858:blink/blinkenlights.c:3093:85541 ReadKeyboard interrupted
+I2023-07-16T22:59:49.451347:blink/blinkenlights.c:3201:85541 Exec
+I2023-07-16T22:59:49.451674:blink/blinkenlights.c:3225:85541 BREAK2 007d26
+I2023-07-16T22:59:49.451696:blink/blinkenlights.c:3287:85541 Tui
+I2023-07-16T22:59:49.451724:blink/blinkenlights.c:770:85541 TuiRejuvinate
+I2023-07-16T22:59:54.949793:blink/blinkenlights.c:3201:85541 Exec
+I2023-07-16T22:59:54.950038:blink/blinkenlights.c:3225:85541 BREAK2 007d26
+I2023-07-16T22:59:54.950050:blink/blinkenlights.c:3287:85541 Tui
+I2023-07-16T22:59:54.950064:blink/blinkenlights.c:770:85541 TuiRejuvinate
+I2023-07-16T22:59:59.062263:blink/blinkenlights.c:3201:85541 Exec
+I2023-07-16T22:59:59.062578:blink/blinkenlights.c:3225:85541 BREAK2 007d26
+I2023-07-16T22:59:59.062600:blink/blinkenlights.c:3287:85541 Tui
+I2023-07-16T22:59:59.062626:blink/blinkenlights.c:770:85541 TuiRejuvinate
+I2023-07-16T22:59:59.908242:blink/blinkenlights.c:3201:85541 Exec
+I2023-07-16T22:59:59.908814:blink/blinkenlights.c:3225:85541 BREAK2 007d26
+I2023-07-16T22:59:59.908832:blink/blinkenlights.c:3287:85541 Tui
+I2023-07-16T22:59:59.908855:blink/blinkenlights.c:770:85541 TuiRejuvinate
+I2023-07-16T23:00:00.681613:blink/blinkenlights.c:3201:85541 Exec
+I2023-07-16T23:00:00.681832:blink/blinkenlights.c:3225:85541 BREAK2 007d26
+I2023-07-16T23:00:00.681844:blink/blinkenlights.c:3287:85541 Tui
+I2023-07-16T23:00:00.681858:blink/blinkenlights.c:770:85541 TuiRejuvinate
+I2023-07-16T23:00:01.462109:blink/blinkenlights.c:3201:85541 Exec
+I2023-07-16T23:00:01.462692:blink/blinkenlights.c:3225:85541 BREAK2 007d26
+I2023-07-16T23:00:01.462704:blink/blinkenlights.c:3287:85541 Tui
+I2023-07-16T23:00:01.462724:blink/blinkenlights.c:770:85541 TuiRejuvinate
+I2023-07-16T23:00:01.994279:blink/blinkenlights.c:3366:85541 TUI EXIT
+I2023-07-16T23:00:01.994315:blink/blinkenlights.c:839:85541 TuiCleanup
+I2023-07-16T23:00:01.994338:blink/blinkenlights.c:831:85541 TtyRestore
+I2023-07-16T23:00:01.996883:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:00:05.150311:blink/syscall.c:1050:85545 unsupported arch_prctl op 0x3001
+I2023-07-16T23:00:05.152449:blink/syscall.c:5720:85545 missing syscall 0x14e
+I2023-07-16T23:00:05.155659:blink/memorymalloc.c:1296:85545 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:00:05.155680:blink/memorymalloc.c:891:85545 host system returned ENOMEM
+I2023-07-16T23:00:05.155691:blink/memorymalloc.c:1296:85545 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:00:05.157675:blink/blinkenlights.c:3287:85545 Tui
+I2023-07-16T23:00:05.159009:blink/blinkenlights.c:953:85545 loaded program ../build/main_disk.img
+
+I2023-07-16T23:00:05.159290:blink/blinkenlights.c:770:85545 TuiRejuvinate
+I2023-07-16T23:00:20.822390:blink/blinkenlights.c:3348:85545 TUI INT
+I2023-07-16T23:00:21.651957:blink/blinkenlights.c:3366:85545 TUI EXIT
+I2023-07-16T23:00:21.652008:blink/blinkenlights.c:839:85545 TuiCleanup
+I2023-07-16T23:00:21.652028:blink/blinkenlights.c:831:85545 TtyRestore
+I2023-07-16T23:00:21.655869:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:00:53.963948:blink/syscall.c:1050:85570 unsupported arch_prctl op 0x3001
+I2023-07-16T23:00:53.966369:blink/syscall.c:5720:85570 missing syscall 0x14e
+I2023-07-16T23:00:53.969647:blink/memorymalloc.c:1296:85570 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:00:53.969668:blink/memorymalloc.c:891:85570 host system returned ENOMEM
+I2023-07-16T23:00:53.969679:blink/memorymalloc.c:1296:85570 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:00:53.971744:blink/blinkenlights.c:3287:85570 Tui
+I2023-07-16T23:00:53.973199:blink/blinkenlights.c:953:85570 loaded program ../build/main_disk.img
+
+I2023-07-16T23:00:53.973515:blink/blinkenlights.c:770:85570 TuiRejuvinate
+I2023-07-16T23:00:59.732832:blink/blinkenlights.c:3348:85570 TUI INT
+I2023-07-16T23:00:59.996240:blink/blinkenlights.c:3366:85570 TUI EXIT
+I2023-07-16T23:00:59.996277:blink/blinkenlights.c:839:85570 TuiCleanup
+I2023-07-16T23:00:59.996294:blink/blinkenlights.c:831:85570 TtyRestore
+I2023-07-16T23:00:59.998952:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:01:09.660253:blink/syscall.c:1050:85575 unsupported arch_prctl op 0x3001
+I2023-07-16T23:01:09.662506:blink/syscall.c:5720:85575 missing syscall 0x14e
+I2023-07-16T23:01:09.665793:blink/memorymalloc.c:1296:85575 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:01:09.665818:blink/memorymalloc.c:891:85575 host system returned ENOMEM
+I2023-07-16T23:01:09.665827:blink/memorymalloc.c:1296:85575 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:01:09.667889:blink/blinkenlights.c:3287:85575 Tui
+I2023-07-16T23:01:09.669280:blink/blinkenlights.c:953:85575 loaded program ../build/main_disk.img
+
+I2023-07-16T23:01:09.669570:blink/blinkenlights.c:770:85575 TuiRejuvinate
+I2023-07-16T23:01:20.816611:blink/blinkenlights.c:3348:85575 TUI INT
+I2023-07-16T23:01:21.021515:blink/blinkenlights.c:3366:85575 TUI EXIT
+I2023-07-16T23:01:21.021564:blink/blinkenlights.c:839:85575 TuiCleanup
+I2023-07-16T23:01:21.021585:blink/blinkenlights.c:831:85575 TtyRestore
+I2023-07-16T23:01:21.025034:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:01:47.024975:blink/syscall.c:1050:85599 unsupported arch_prctl op 0x3001
+I2023-07-16T23:01:47.027127:blink/syscall.c:5720:85599 missing syscall 0x14e
+I2023-07-16T23:01:47.030385:blink/memorymalloc.c:1296:85599 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:01:47.030406:blink/memorymalloc.c:891:85599 host system returned ENOMEM
+I2023-07-16T23:01:47.030416:blink/memorymalloc.c:1296:85599 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:01:47.032447:blink/blinkenlights.c:3287:85599 Tui
+I2023-07-16T23:01:47.033814:blink/blinkenlights.c:953:85599 loaded program ../build/main_disk.img
+
+I2023-07-16T23:01:47.034109:blink/blinkenlights.c:770:85599 TuiRejuvinate
+I2023-07-16T23:01:55.838789:blink/blinkenlights.c:3348:85599 TUI INT
+I2023-07-16T23:01:56.845181:blink/blinkenlights.c:3093:85599 ReadKeyboard interrupted
+I2023-07-16T23:02:02.856658:blink/blinkenlights.c:3201:85599 Exec
+I2023-07-16T23:02:02.857150:blink/blinkenlights.c:3225:85599 BREAK2 007d26
+I2023-07-16T23:02:02.857200:blink/blinkenlights.c:3287:85599 Tui
+I2023-07-16T23:02:02.857268:blink/blinkenlights.c:770:85599 TuiRejuvinate
+I2023-07-16T23:02:04.525134:blink/blinkenlights.c:3093:85599 ReadKeyboard interrupted
+I2023-07-16T23:02:09.757610:blink/blinkenlights.c:3093:85599 ReadKeyboard interrupted
+I2023-07-16T23:02:11.008265:blink/blinkenlights.c:3093:85599 ReadKeyboard interrupted
+I2023-07-16T23:02:14.461327:blink/blinkenlights.c:3201:85599 Exec
+I2023-07-16T23:02:14.461635:blink/blinkenlights.c:3225:85599 BREAK2 007d26
+I2023-07-16T23:02:14.461660:blink/blinkenlights.c:3287:85599 Tui
+I2023-07-16T23:02:14.461687:blink/blinkenlights.c:770:85599 TuiRejuvinate
+I2023-07-16T23:02:18.154428:blink/blinkenlights.c:3093:85599 ReadKeyboard interrupted
+I2023-07-16T23:02:19.789499:blink/blinkenlights.c:3093:85599 ReadKeyboard interrupted
+I2023-07-16T23:02:21.966677:blink/blinkenlights.c:3093:85599 ReadKeyboard interrupted
+I2023-07-16T23:08:04.417894:blink/blinkenlights.c:3366:85599 TUI EXIT
+I2023-07-16T23:08:04.417957:blink/blinkenlights.c:839:85599 TuiCleanup
+I2023-07-16T23:08:04.417978:blink/blinkenlights.c:831:85599 TtyRestore
+I2023-07-16T23:08:04.428724:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:08:05.384532:blink/syscall.c:1050:85742 unsupported arch_prctl op 0x3001
+I2023-07-16T23:08:05.386671:blink/syscall.c:5720:85742 missing syscall 0x14e
+I2023-07-16T23:08:05.389903:blink/memorymalloc.c:1296:85742 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:08:05.389924:blink/memorymalloc.c:891:85742 host system returned ENOMEM
+I2023-07-16T23:08:05.389935:blink/memorymalloc.c:1296:85742 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:08:05.391957:blink/blinkenlights.c:3287:85742 Tui
+I2023-07-16T23:08:05.393332:blink/blinkenlights.c:953:85742 loaded program ../build/main_disk.img
+
+I2023-07-16T23:08:05.393626:blink/blinkenlights.c:770:85742 TuiRejuvinate
+I2023-07-16T23:08:07.631410:blink/blinkenlights.c:3348:85742 TUI INT
+I2023-07-16T23:08:09.038197:blink/blinkenlights.c:3201:85742 Exec
+I2023-07-16T23:08:09.044713:blink/blinkenlights.c:3225:85742 BREAK2 007db6
+I2023-07-16T23:08:09.044735:blink/blinkenlights.c:3287:85742 Tui
+I2023-07-16T23:08:09.044762:blink/blinkenlights.c:770:85742 TuiRejuvinate
+I2023-07-16T23:08:09.803146:blink/blinkenlights.c:3201:85742 Exec
+I2023-07-16T23:08:09.810492:blink/blinkenlights.c:3225:85742 BREAK2 007db6
+I2023-07-16T23:08:09.810510:blink/blinkenlights.c:3287:85742 Tui
+I2023-07-16T23:08:09.810526:blink/blinkenlights.c:770:85742 TuiRejuvinate
+I2023-07-16T23:08:10.039695:blink/blinkenlights.c:3201:85742 Exec
+I2023-07-16T23:08:10.046987:blink/blinkenlights.c:3225:85742 BREAK2 007db6
+I2023-07-16T23:08:10.047005:blink/blinkenlights.c:3287:85742 Tui
+I2023-07-16T23:08:10.047023:blink/blinkenlights.c:770:85742 TuiRejuvinate
+I2023-07-16T23:08:10.282260:blink/blinkenlights.c:3201:85742 Exec
+I2023-07-16T23:08:10.288818:blink/blinkenlights.c:3225:85742 BREAK2 007db6
+I2023-07-16T23:08:10.288835:blink/blinkenlights.c:3287:85742 Tui
+I2023-07-16T23:08:10.288854:blink/blinkenlights.c:770:85742 TuiRejuvinate
+I2023-07-16T23:08:10.518426:blink/blinkenlights.c:3201:85742 Exec
+I2023-07-16T23:08:10.524819:blink/blinkenlights.c:3225:85742 BREAK2 007db6
+I2023-07-16T23:08:10.524834:blink/blinkenlights.c:3287:85742 Tui
+I2023-07-16T23:08:10.524848:blink/blinkenlights.c:770:85742 TuiRejuvinate
+I2023-07-16T23:08:10.749866:blink/blinkenlights.c:3201:85742 Exec
+I2023-07-16T23:08:10.756635:blink/blinkenlights.c:3225:85742 BREAK2 007db6
+I2023-07-16T23:08:10.756653:blink/blinkenlights.c:3287:85742 Tui
+I2023-07-16T23:08:10.756669:blink/blinkenlights.c:770:85742 TuiRejuvinate
+I2023-07-16T23:08:11.056850:blink/blinkenlights.c:3201:85742 Exec
+I2023-07-16T23:08:14.760179:blink/blinkenlights.c:3249:85742 EXEC INT
+I2023-07-16T23:08:14.760230:blink/blinkenlights.c:3251:85742 REACT
+I2023-07-16T23:08:14.760247:blink/blinkenlights.c:3287:85742 Tui
+I2023-07-16T23:08:14.760264:blink/blinkenlights.c:770:85742 TuiRejuvinate
+I2023-07-16T23:08:14.937992:blink/blinkenlights.c:3366:85742 TUI EXIT
+I2023-07-16T23:08:14.938032:blink/blinkenlights.c:839:85742 TuiCleanup
+I2023-07-16T23:08:14.938050:blink/blinkenlights.c:831:85742 TtyRestore
+I2023-07-16T23:08:14.940542:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:08:15.839522:blink/syscall.c:1050:85746 unsupported arch_prctl op 0x3001
+I2023-07-16T23:08:15.842212:blink/syscall.c:5720:85746 missing syscall 0x14e
+I2023-07-16T23:08:15.845484:blink/memorymalloc.c:1296:85746 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:08:15.845506:blink/memorymalloc.c:891:85746 host system returned ENOMEM
+I2023-07-16T23:08:15.845517:blink/memorymalloc.c:1296:85746 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:08:15.847533:blink/blinkenlights.c:3287:85746 Tui
+I2023-07-16T23:08:15.848984:blink/blinkenlights.c:953:85746 loaded program ../build/main_disk.img
+
+I2023-07-16T23:08:15.849333:blink/blinkenlights.c:770:85746 TuiRejuvinate
+I2023-07-16T23:08:20.638769:blink/blinkenlights.c:3348:85746 TUI INT
+I2023-07-16T23:08:21.563514:blink/blinkenlights.c:3366:85746 TUI EXIT
+I2023-07-16T23:08:21.563568:blink/blinkenlights.c:839:85746 TuiCleanup
+I2023-07-16T23:08:21.563585:blink/blinkenlights.c:831:85746 TtyRestore
+I2023-07-16T23:08:21.566313:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:08:23.025136:blink/syscall.c:1050:85748 unsupported arch_prctl op 0x3001
+I2023-07-16T23:08:23.027265:blink/syscall.c:5720:85748 missing syscall 0x14e
+I2023-07-16T23:08:23.030511:blink/memorymalloc.c:1296:85748 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:08:23.030532:blink/memorymalloc.c:891:85748 host system returned ENOMEM
+I2023-07-16T23:08:23.030543:blink/memorymalloc.c:1296:85748 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:08:23.032524:blink/blinkenlights.c:3287:85748 Tui
+I2023-07-16T23:08:23.033848:blink/blinkenlights.c:953:85748 loaded program ../build/main_disk.img
+
+I2023-07-16T23:08:23.034122:blink/blinkenlights.c:770:85748 TuiRejuvinate
+I2023-07-16T23:08:26.547812:blink/blinkenlights.c:3348:85748 TUI INT
+I2023-07-16T23:08:27.569053:blink/blinkenlights.c:3093:85748 ReadKeyboard interrupted
+I2023-07-16T23:08:28.895963:blink/blinkenlights.c:3093:85748 ReadKeyboard interrupted
+I2023-07-16T23:08:34.595671:blink/blinkenlights.c:3093:85748 ReadKeyboard interrupted
+I2023-07-16T23:08:39.720568:blink/blinkenlights.c:3201:85748 Exec
+I2023-07-16T23:08:39.720910:blink/blinkenlights.c:3225:85748 BREAK2 007d00
+I2023-07-16T23:08:39.720948:blink/blinkenlights.c:3287:85748 Tui
+I2023-07-16T23:08:39.721004:blink/blinkenlights.c:770:85748 TuiRejuvinate
+I2023-07-16T23:08:44.792338:blink/blinkenlights.c:3201:85748 Exec
+I2023-07-16T23:08:44.792559:blink/blinkenlights.c:3225:85748 BREAK2 007d26
+I2023-07-16T23:08:44.792570:blink/blinkenlights.c:3287:85748 Tui
+I2023-07-16T23:08:44.792587:blink/blinkenlights.c:770:85748 TuiRejuvinate
+I2023-07-16T23:08:49.474660:blink/blinkenlights.c:3093:85748 ReadKeyboard interrupted
+I2023-07-16T23:08:53.602074:blink/blinkenlights.c:3093:85748 ReadKeyboard interrupted
+I2023-07-16T23:08:58.893935:blink/blinkenlights.c:3201:85748 Exec
+I2023-07-16T23:08:58.894149:blink/blinkenlights.c:3225:85748 BREAK2 007d26
+I2023-07-16T23:08:58.894160:blink/blinkenlights.c:3287:85748 Tui
+I2023-07-16T23:08:58.894176:blink/blinkenlights.c:770:85748 TuiRejuvinate
+I2023-07-16T23:09:04.470989:blink/blinkenlights.c:3201:85748 Exec
+I2023-07-16T23:09:04.471300:blink/blinkenlights.c:3225:85748 BREAK2 007d26
+I2023-07-16T23:09:04.471332:blink/blinkenlights.c:3287:85748 Tui
+I2023-07-16T23:09:04.471358:blink/blinkenlights.c:770:85748 TuiRejuvinate
+I2023-07-16T23:09:11.152954:blink/blinkenlights.c:3366:85748 TUI EXIT
+I2023-07-16T23:09:11.153184:blink/blinkenlights.c:839:85748 TuiCleanup
+I2023-07-16T23:09:11.153230:blink/blinkenlights.c:831:85748 TtyRestore
+I2023-07-16T23:09:11.160206:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:09:11.992641:blink/syscall.c:1050:85761 unsupported arch_prctl op 0x3001
+I2023-07-16T23:09:11.994798:blink/syscall.c:5720:85761 missing syscall 0x14e
+I2023-07-16T23:09:11.998074:blink/memorymalloc.c:1296:85761 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:09:11.998096:blink/memorymalloc.c:891:85761 host system returned ENOMEM
+I2023-07-16T23:09:11.998107:blink/memorymalloc.c:1296:85761 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:09:12.000127:blink/blinkenlights.c:3287:85761 Tui
+I2023-07-16T23:09:12.001469:blink/blinkenlights.c:953:85761 loaded program ../build/main_disk.img
+
+I2023-07-16T23:09:12.001748:blink/blinkenlights.c:770:85761 TuiRejuvinate
+I2023-07-16T23:09:15.784279:blink/blinkenlights.c:3348:85761 TUI INT
+I2023-07-16T23:09:16.464906:blink/blinkenlights.c:3201:85761 Exec
+I2023-07-16T23:09:16.465164:blink/blinkenlights.c:3225:85761 BREAK2 007d6b
+I2023-07-16T23:09:16.465182:blink/blinkenlights.c:3287:85761 Tui
+I2023-07-16T23:09:16.465240:blink/blinkenlights.c:770:85761 TuiRejuvinate
+I2023-07-16T23:09:19.937859:blink/blinkenlights.c:3093:85761 ReadKeyboard interrupted
+I2023-07-16T23:09:32.701292:blink/blinkenlights.c:3093:85761 ReadKeyboard interrupted
+I2023-07-16T23:09:41.108373:blink/blinkenlights.c:3093:85761 ReadKeyboard interrupted
+I2023-07-16T23:09:42.604931:blink/blinkenlights.c:3366:85761 TUI EXIT
+I2023-07-16T23:09:42.604985:blink/blinkenlights.c:839:85761 TuiCleanup
+I2023-07-16T23:09:42.605007:blink/blinkenlights.c:831:85761 TtyRestore
+I2023-07-16T23:09:42.607684:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:09:44.057518:blink/syscall.c:1050:85763 unsupported arch_prctl op 0x3001
+I2023-07-16T23:09:44.059777:blink/syscall.c:5720:85763 missing syscall 0x14e
+I2023-07-16T23:09:44.063078:blink/memorymalloc.c:1296:85763 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:09:44.063102:blink/memorymalloc.c:891:85763 host system returned ENOMEM
+I2023-07-16T23:09:44.063114:blink/memorymalloc.c:1296:85763 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:09:44.065175:blink/blinkenlights.c:3287:85763 Tui
+I2023-07-16T23:09:44.066601:blink/blinkenlights.c:953:85763 loaded program ../build/main_disk.img
+
+I2023-07-16T23:09:44.066972:blink/blinkenlights.c:770:85763 TuiRejuvinate
+I2023-07-16T23:10:16.403632:blink/blinkenlights.c:3348:85763 TUI INT
+I2023-07-16T23:10:17.392029:blink/blinkenlights.c:3201:85763 Exec
+I2023-07-16T23:10:17.398996:blink/blinkenlights.c:3225:85763 BREAK2 007db6
+I2023-07-16T23:10:17.399032:blink/blinkenlights.c:3287:85763 Tui
+I2023-07-16T23:10:17.399064:blink/blinkenlights.c:770:85763 TuiRejuvinate
+I2023-07-16T23:10:17.627871:blink/blinkenlights.c:3201:85763 Exec
+I2023-07-16T23:10:17.634868:blink/blinkenlights.c:3225:85763 BREAK2 007db6
+I2023-07-16T23:10:17.634898:blink/blinkenlights.c:3287:85763 Tui
+I2023-07-16T23:10:17.634919:blink/blinkenlights.c:770:85763 TuiRejuvinate
+I2023-07-16T23:10:17.866271:blink/blinkenlights.c:3201:85763 Exec
+I2023-07-16T23:10:17.873204:blink/blinkenlights.c:3225:85763 BREAK2 007db6
+I2023-07-16T23:10:17.873240:blink/blinkenlights.c:3287:85763 Tui
+I2023-07-16T23:10:17.873260:blink/blinkenlights.c:770:85763 TuiRejuvinate
+I2023-07-16T23:10:18.106555:blink/blinkenlights.c:3201:85763 Exec
+I2023-07-16T23:10:18.113578:blink/blinkenlights.c:3225:85763 BREAK2 007db6
+I2023-07-16T23:10:18.113607:blink/blinkenlights.c:3287:85763 Tui
+I2023-07-16T23:10:18.113629:blink/blinkenlights.c:770:85763 TuiRejuvinate
+I2023-07-16T23:10:18.347427:blink/blinkenlights.c:3201:85763 Exec
+I2023-07-16T23:10:18.354073:blink/blinkenlights.c:3225:85763 BREAK2 007db6
+I2023-07-16T23:10:18.354097:blink/blinkenlights.c:3287:85763 Tui
+I2023-07-16T23:10:18.354120:blink/blinkenlights.c:770:85763 TuiRejuvinate
+I2023-07-16T23:10:19.352875:blink/blinkenlights.c:3348:85763 TUI INT
+I2023-07-16T23:10:22.249817:blink/blinkenlights.c:3201:85763 Exec
+I2023-07-16T23:10:22.250496:blink/blinkenlights.c:3225:85763 BREAK2 007cc2
+I2023-07-16T23:10:22.250528:blink/blinkenlights.c:3287:85763 Tui
+I2023-07-16T23:10:22.250561:blink/blinkenlights.c:770:85763 TuiRejuvinate
+I2023-07-16T23:10:28.899957:blink/blinkenlights.c:3201:85763 Exec
+I2023-07-16T23:10:28.900171:blink/blinkenlights.c:3225:85763 BREAK2 007d00
+I2023-07-16T23:10:28.900194:blink/blinkenlights.c:3287:85763 Tui
+I2023-07-16T23:10:28.900219:blink/blinkenlights.c:770:85763 TuiRejuvinate
+I2023-07-16T23:10:32.243449:blink/blinkenlights.c:3093:85763 ReadKeyboard interrupted
+I2023-07-16T23:10:33.380868:blink/blinkenlights.c:3093:85763 ReadKeyboard interrupted
+I2023-07-16T23:10:34.479209:blink/blinkenlights.c:3093:85763 ReadKeyboard interrupted
+I2023-07-16T23:10:36.625689:blink/blinkenlights.c:3093:85763 ReadKeyboard interrupted
+I2023-07-16T23:10:40.024422:blink/blinkenlights.c:3093:85763 ReadKeyboard interrupted
+I2023-07-16T23:10:41.963236:blink/blinkenlights.c:3093:85763 ReadKeyboard interrupted
+I2023-07-16T23:10:44.198783:blink/blinkenlights.c:3093:85763 ReadKeyboard interrupted
+I2023-07-16T23:10:45.588404:blink/blinkenlights.c:3093:85763 ReadKeyboard interrupted
+I2023-07-16T23:11:31.920446:blink/blinkenlights.c:3366:85763 TUI EXIT
+I2023-07-16T23:11:31.920539:blink/blinkenlights.c:839:85763 TuiCleanup
+I2023-07-16T23:11:31.920583:blink/blinkenlights.c:831:85763 TtyRestore
+I2023-07-16T23:11:31.926776:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:11:38.241515:blink/syscall.c:1050:85869 unsupported arch_prctl op 0x3001
+I2023-07-16T23:11:38.243658:blink/syscall.c:5720:85869 missing syscall 0x14e
+I2023-07-16T23:11:38.246948:blink/memorymalloc.c:1296:85869 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:11:38.246972:blink/memorymalloc.c:891:85869 host system returned ENOMEM
+I2023-07-16T23:11:38.246983:blink/memorymalloc.c:1296:85869 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:11:38.249048:blink/blinkenlights.c:3287:85869 Tui
+I2023-07-16T23:11:38.250430:blink/blinkenlights.c:953:85869 loaded program ../build/main_disk.img
+
+I2023-07-16T23:11:38.250732:blink/blinkenlights.c:770:85869 TuiRejuvinate
+I2023-07-16T23:11:41.200010:blink/blinkenlights.c:3348:85869 TUI INT
+I2023-07-16T23:11:46.107914:blink/blinkenlights.c:3093:85869 ReadKeyboard interrupted
+I2023-07-16T23:11:48.842189:blink/blinkenlights.c:3093:85869 ReadKeyboard interrupted
+I2023-07-16T23:12:53.243426:blink/blinkenlights.c:3093:85869 ReadKeyboard interrupted
+I2023-07-16T23:13:00.356698:blink/blinkenlights.c:3201:85869 Exec
+I2023-07-16T23:13:00.357082:blink/blinkenlights.c:3225:85869 BREAK2 007d00
+I2023-07-16T23:13:00.357135:blink/blinkenlights.c:3287:85869 Tui
+I2023-07-16T23:13:00.357197:blink/blinkenlights.c:770:85869 TuiRejuvinate
+I2023-07-16T23:13:03.592598:blink/blinkenlights.c:3093:85869 ReadKeyboard interrupted
+I2023-07-16T23:13:05.052243:blink/blinkenlights.c:3201:85869 Exec
+I2023-07-16T23:13:05.052602:blink/blinkenlights.c:3225:85869 BREAK2 007d26
+I2023-07-16T23:13:05.052640:blink/blinkenlights.c:3287:85869 Tui
+I2023-07-16T23:13:05.052672:blink/blinkenlights.c:770:85869 TuiRejuvinate
+I2023-07-16T23:13:07.758288:blink/blinkenlights.c:3093:85869 ReadKeyboard interrupted
+I2023-07-16T23:13:15.095880:blink/blinkenlights.c:3093:85869 ReadKeyboard interrupted
+I2023-07-16T23:13:19.370077:blink/blinkenlights.c:3093:85869 ReadKeyboard interrupted
+I2023-07-16T23:13:23.479764:blink/blinkenlights.c:3093:85869 ReadKeyboard interrupted
+I2023-07-16T23:14:08.940090:blink/blinkenlights.c:3093:85869 ReadKeyboard interrupted
+I2023-07-16T23:14:56.224658:blink/blinkenlights.c:3366:85869 TUI EXIT
+I2023-07-16T23:14:56.224753:blink/blinkenlights.c:839:85869 TuiCleanup
+I2023-07-16T23:14:56.224817:blink/blinkenlights.c:831:85869 TtyRestore
+I2023-07-16T23:14:56.232102:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:14:57.598622:blink/syscall.c:1050:85960 unsupported arch_prctl op 0x3001
+I2023-07-16T23:14:57.600741:blink/syscall.c:5720:85960 missing syscall 0x14e
+I2023-07-16T23:14:57.604003:blink/memorymalloc.c:1296:85960 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:14:57.604024:blink/memorymalloc.c:891:85960 host system returned ENOMEM
+I2023-07-16T23:14:57.604035:blink/memorymalloc.c:1296:85960 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:14:57.606082:blink/blinkenlights.c:3287:85960 Tui
+I2023-07-16T23:14:57.607467:blink/blinkenlights.c:953:85960 loaded program ../build/main_disk.img
+
+I2023-07-16T23:14:57.607767:blink/blinkenlights.c:770:85960 TuiRejuvinate
+I2023-07-16T23:15:01.578058:blink/blinkenlights.c:3348:85960 TUI INT
+I2023-07-16T23:15:05.845451:blink/blinkenlights.c:3201:85960 Exec
+I2023-07-16T23:15:05.845928:blink/blinkenlights.c:3225:85960 BREAK2 007d6c
+I2023-07-16T23:15:05.845978:blink/blinkenlights.c:3287:85960 Tui
+I2023-07-16T23:15:05.846045:blink/blinkenlights.c:770:85960 TuiRejuvinate
+I2023-07-16T23:15:13.369662:blink/blinkenlights.c:3201:85960 Exec
+I2023-07-16T23:15:13.370109:blink/blinkenlights.c:3225:85960 BREAK2 007d26
+I2023-07-16T23:15:13.370139:blink/blinkenlights.c:3287:85960 Tui
+I2023-07-16T23:15:13.370171:blink/blinkenlights.c:770:85960 TuiRejuvinate
+I2023-07-16T23:15:15.173413:blink/blinkenlights.c:3093:85960 ReadKeyboard interrupted
+I2023-07-16T23:15:25.026700:blink/blinkenlights.c:3201:85960 Exec
+I2023-07-16T23:15:25.027017:blink/blinkenlights.c:3225:85960 BREAK2 007d26
+I2023-07-16T23:15:25.027041:blink/blinkenlights.c:3287:85960 Tui
+I2023-07-16T23:15:25.027068:blink/blinkenlights.c:770:85960 TuiRejuvinate
+I2023-07-16T23:15:28.591300:blink/blinkenlights.c:3093:85960 ReadKeyboard interrupted
+I2023-07-16T23:15:33.859251:blink/blinkenlights.c:3093:85960 ReadKeyboard interrupted
+I2023-07-16T23:16:36.681728:blink/blinkenlights.c:3201:85960 Exec
+I2023-07-16T23:16:36.681968:blink/blinkenlights.c:3225:85960 BREAK2 007d26
+I2023-07-16T23:16:36.681980:blink/blinkenlights.c:3287:85960 Tui
+I2023-07-16T23:16:36.681996:blink/blinkenlights.c:770:85960 TuiRejuvinate
+I2023-07-16T23:16:38.216871:blink/blinkenlights.c:3093:85960 ReadKeyboard interrupted
+I2023-07-16T23:16:42.997837:blink/blinkenlights.c:3093:85960 ReadKeyboard interrupted
+I2023-07-16T23:16:47.136281:blink/blinkenlights.c:3366:85960 TUI EXIT
+I2023-07-16T23:16:47.136363:blink/blinkenlights.c:839:85960 TuiCleanup
+I2023-07-16T23:16:47.136407:blink/blinkenlights.c:831:85960 TtyRestore
+I2023-07-16T23:16:47.142680:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:16:48.219277:blink/syscall.c:1050:85983 unsupported arch_prctl op 0x3001
+I2023-07-16T23:16:48.221413:blink/syscall.c:5720:85983 missing syscall 0x14e
+I2023-07-16T23:16:48.224706:blink/memorymalloc.c:1296:85983 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:16:48.224732:blink/memorymalloc.c:891:85983 host system returned ENOMEM
+I2023-07-16T23:16:48.224742:blink/memorymalloc.c:1296:85983 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:16:48.226778:blink/blinkenlights.c:3287:85983 Tui
+I2023-07-16T23:16:48.228146:blink/blinkenlights.c:953:85983 loaded program ../build/main_disk.img
+
+I2023-07-16T23:16:48.228455:blink/blinkenlights.c:770:85983 TuiRejuvinate
+I2023-07-16T23:16:50.647200:blink/blinkenlights.c:3348:85983 TUI INT
+I2023-07-16T23:16:51.662482:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:16:58.126958:blink/blinkenlights.c:3201:85983 Exec
+I2023-07-16T23:16:58.127318:blink/blinkenlights.c:3225:85983 BREAK2 007cc2
+I2023-07-16T23:16:58.127351:blink/blinkenlights.c:3287:85983 Tui
+I2023-07-16T23:16:58.127402:blink/blinkenlights.c:770:85983 TuiRejuvinate
+I2023-07-16T23:16:59.850987:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:17:02.941462:blink/blinkenlights.c:3201:85983 Exec
+I2023-07-16T23:17:02.941677:blink/blinkenlights.c:3225:85983 BREAK2 007d00
+I2023-07-16T23:17:02.941700:blink/blinkenlights.c:3287:85983 Tui
+I2023-07-16T23:17:02.941727:blink/blinkenlights.c:770:85983 TuiRejuvinate
+I2023-07-16T23:17:04.744343:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:17:10.138240:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:17:16.031610:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:17:25.475880:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:17:33.534851:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:17:38.304736:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:17:43.054179:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:17:45.324041:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:17:49.539052:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:18:00.553191:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:18:01.997217:blink/blinkenlights.c:3093:85983 ReadKeyboard interrupted
+I2023-07-16T23:18:16.604665:blink/blinkenlights.c:3201:85983 Exec
+I2023-07-16T23:18:16.605060:blink/blinkenlights.c:3225:85983 BREAK2 007d26
+I2023-07-16T23:18:16.605090:blink/blinkenlights.c:3287:85983 Tui
+I2023-07-16T23:18:16.605123:blink/blinkenlights.c:770:85983 TuiRejuvinate
+I2023-07-16T23:20:39.103146:blink/blinkenlights.c:3366:85983 TUI EXIT
+I2023-07-16T23:20:39.103201:blink/blinkenlights.c:839:85983 TuiCleanup
+I2023-07-16T23:20:39.103223:blink/blinkenlights.c:831:85983 TtyRestore
+I2023-07-16T23:20:39.109934:blink/blinkenlights.c:831:0 TtyRestore
+I2023-07-16T23:20:44.495356:blink/syscall.c:1050:86081 unsupported arch_prctl op 0x3001
+I2023-07-16T23:20:44.497485:blink/syscall.c:5720:86081 missing syscall 0x14e
+I2023-07-16T23:20:44.500726:blink/memorymalloc.c:1296:86081 mprotect(0x812300000000, 0x1) interval has unmapped pages
+I2023-07-16T23:20:44.500746:blink/memorymalloc.c:891:86081 host system returned ENOMEM
+I2023-07-16T23:20:44.500757:blink/memorymalloc.c:1296:86081 mprotect(0x409180000000, 0x1) interval has unmapped pages
+I2023-07-16T23:20:44.502766:blink/blinkenlights.c:3287:86081 Tui
+I2023-07-16T23:20:44.504119:blink/blinkenlights.c:953:86081 loaded program ../build/main_disk.img
+
+I2023-07-16T23:20:44.504410:blink/blinkenlights.c:770:86081 TuiRejuvinate
+I2023-07-16T23:20:51.403760:blink/blinkenlights.c:3287:86081 Tui
+I2023-07-16T23:20:51.403826:blink/blinkenlights.c:770:86081 TuiRejuvinate
+I2023-07-16T23:20:51.416472:blink/blinkenlights.c:3366:86081 TUI EXIT
+I2023-07-16T23:20:51.416491:blink/blinkenlights.c:839:86081 TuiCleanup
+I2023-07-16T23:20:51.416514:blink/blinkenlights.c:831:86081 TtyRestore
+I2023-07-16T23:20:51.419789:blink/blinkenlights.c:831:0 TtyRestore
