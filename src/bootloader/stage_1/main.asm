@@ -11,7 +11,7 @@ jmp  _start
 nop
 
 BPB_OEM_ID: db 'MSWIN4.1'
-BPB_BYTES_PER_SECTOR: dw 512
+BPB_BYTES_PER_SECTOR: dw 5092
 BPB_SECTORS_PER_CLUSTER: db 2
 BPB_RESERVED_SECTORS: dw 2
 BPB_FILE_ALLOCATION_COUNT: db 2
@@ -58,10 +58,8 @@ _start:
 
 
 	;print starting message
-	;mov si, loadmsg
-	;call puts
-
-	call load_file_root	
+	mov si, loadmsg
+	call puts
 	mov bx, second_stage_start
 	mov cx, 1
 	mov ax, 1
@@ -93,25 +91,30 @@ wait_for_reset:
 ;	-es:bx where to load file
 ;
 load_file_root:
-	push si
+	[bits 16]
 	push ax
 	push bx
 	push es
 	push dx
-
+	push si
 	;find start of root dir
 	mov ax, [BPB_SECTORS_PER_FAT]
-	mov bx, [BPB_FILE_ALLOCATION_COUNT]
+	mov bl, [BPB_FILE_ALLOCATION_COUNT]
+	xor bh, bh
 	mul bx
 	add ax, [BPB_RESERVED_SECTORS]
 	
 	mov [root_LBA], ax
+	
+
 	;find size of root dir
 	mov ax, [BPB_DIR_ENTRIES_COUNT]
 	shl ax, 5
 	xor dx, dx
-	div dword [BPB_BYTES_PER_SECTOR]
+	mov bx, [BPB_BYTES_PER_SECTOR]
+	div bx
 	
+
 
 	test dx, dx
 	jz .load_file_after
@@ -129,13 +132,12 @@ load_file_root:
 	xor bx, bx
 
 	call disk_read
-	
-.find:
-
 	mov di, bx
 	xor bx, bx
-	
-	mov cx, 11
+
+.find:
+	mov si, STAGE2
+	mov cx, 10
 	push di
 	repe cmpsb 
 	pop di
@@ -217,7 +219,7 @@ disk_read:
 	push ax
 	push cx
 	push di
-
+	push si
 	push cx				;save the number of sectors
 	call .lba_to_chs		;compute CHS
 	pop ax				;get the number of sectors to al
@@ -250,6 +252,7 @@ disk_read:
 
 .done:
 	popa
+	pop es
 	pop di
 	pop dx
 	pop ax
