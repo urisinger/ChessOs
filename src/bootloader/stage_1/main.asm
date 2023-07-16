@@ -55,16 +55,35 @@ _start:
 	;read from flappy disk
 	mov dl, [EBR_DRIVE_NUMBER]	;set dl to current drive number
 
+	push es
+	mov ah, 08h
+	int 13h
+	jc disk_error
+	pop es
+	push cx
+	and cl, 0x3F
+	xor ch, ch
+	mov [BPB_SECTORS_PER_TRACK], cx
+	pop cx
 
+
+	inc dh
+	mov [BPB_HEADS], dh
+	
+	xor dx,dx
 
 	;print starting message
 	mov si, loadmsg
 	call puts
+	mov si, STAGE2
+	call load_file_root
+	xor bx,bx
+	mov es, bx
 	mov bx, second_stage_start
 	mov cx, 1
 	mov ax, 1
 
-	call disk_read
+	;call disk_read
 
 	jmp second_stage_start
 
@@ -90,6 +109,7 @@ wait_for_reset:
 ;	-si pointer to start of filname
 ;	-es:bx where to load file
 ;
+
 load_file_root:
 	[bits 16]
 	push ax
@@ -137,7 +157,7 @@ load_file_root:
 
 .find:
 	mov si, STAGE2
-	mov cx, 10
+	mov cx, 11
 	push di
 	repe cmpsb 
 	pop di
@@ -156,11 +176,12 @@ load_file_root:
 	jmp wait_for_reset
 
 .found:
-	mov ax, [di + 26]
+	mov ax, es:[di + 26]
 	mov [Kernel_cluster], ax
-	
-	mov ax, [BPB_RESERVED_SECTORS]
+	mov bx, buffer_seg
+	mov es, bx
 	xor bx, bx
+	mov ax, [BPB_RESERVED_SECTORS]
 	mov cl, [BPB_SECTORS_PER_FAT]
 	mov dl, [EBR_DRIVE_NUMBER]
 	call disk_read
@@ -170,22 +191,29 @@ load_file_root:
 		
 	mov bx, second_stage_start
 
+
 .load_file_loop:
 	mov ax, [Kernel_cluster]
+	sub ax, 2
+	mov cx, [BPB_SECTORS_PER_CLUSTER]
+	mul cx
 	add ax, [root_LBA]
 	add ax, [root_size]
 
-	mov cl, 1
+	mov cx, [BPB_SECTORS_PER_CLUSTER]
 	mov dl, [EBR_DRIVE_NUMBER]
 	call disk_read
-	
 	add bx, [BPB_BYTES_PER_SECTOR]
 
 	mov ax, [Kernel_cluster]
 	mov cx, 2
 	mul cx
 	mov si, ax
+	mov cx, buffer_seg
+	mov es, cx
 	mov ax, [es:si]
+	xor cx, cx
+	mov es, cx
 
 	cmp ax, 0xFFF8
 	jae .read_finish
@@ -203,6 +231,10 @@ load_file_root:
 	ret
 
 	
+disk_error:
+	mov si,	Read_Failed
+	call puts
+	jmp wait_for_reset
 
 
 
@@ -219,7 +251,6 @@ disk_read:
 	push ax
 	push cx
 	push di
-	push si
 	push cx				;save the number of sectors
 	call .lba_to_chs		;compute CHS
 	pop ax				;get the number of sectors to al
@@ -243,16 +274,11 @@ disk_read:
 	jnz .retry
 
 .fail:
-	jmp .disk_error
+	jmp disk_error
 
-.disk_error:
-	mov si,	Read_Failed
-	call puts
-	jmp wait_for_reset
 
 .done:
 	popa
-	pop es
 	pop di
 	pop dx
 	pop ax
@@ -270,7 +296,7 @@ disk_read:
 	mov ah, 0
 	stc
 	int 13h
-	jc .disk_error
+	jc disk_error
 	popa
 	ret
 
@@ -290,7 +316,7 @@ disk_read:
 	push dx
 
 	xor dx, dx			;dx = 0
-	div	word [BPB_SECTORS_PER_TRACK]		;ax = LBA / BPB_SECTORS_PER_TRACK, dx = LBA % BPB_SECTORS_PER_TRACK 
+	div	word [BPB_SECTORS_PER_TRACK]		;ax = head = LBA / BPB_SECTORS_PER_TRACK, dx = sector = LBA % BPB_SECTORS_PER_TRACK + 1
 		
 	inc dx
 	mov cx, dx
@@ -303,7 +329,6 @@ disk_read:
 	mov ch, al			;move lowest 8 bits of ax into ch
 	shl ah, 6			;get the 2 upper bits of ax
 	or cl, ah			;move 
-
 
 	pop ax
 	mov dl, al
@@ -343,7 +368,7 @@ buffer_seg equ 0x2000
 STAGE2: db 'STAGE2  BIN'
 root_LBA: dw 0
 root_size: dw 0
-loadmsg: db 'loading stage 2...', ENDL, 0
+loadmsg: db 'loading stage 2', ENDL, 0
 Kernel_no: db 'stage2 not found', ENDL, 0
 Read_Failed:db 'Cant read disk', ENDL, 0
 Kernel_cluster: dw 0
@@ -352,103 +377,4 @@ dw 0AA55h
 
 
 second_stage_start:
-	[bits 16]
-	
-	mov ah, 0
-	int 10h
 
-	cli
-	call setGdt
-	mov eax, cr0
-	or ax, 1
-	mov cr0, eax
-
-	jmp 08h:protected_main
-
-gdtr: dw 0 ; For limit storage
-     dd 0 ; For base storage
- 
-setGdt:
-   xor eax, eax
-   mov ax, ds
-   shl eax, 4
-   add eax, GDT_START
-   mov [gdtr + 2], eax
-   mov eax, GDT_END
-   sub eax, GDT_START
-   mov [gdtr], ax
-   lgdt [gdtr]
-   ret
-
-
-GDT_START:
-	dq 0
-
-	dw 0FFFFh
-	dw 0x0000
-	db 0
-	db 10011010b
-	db 11001111b
-	db 0
-
-	dw 0FFFFh
-	dw 0x0000
-	db 0
-	db 10010010b
-	db 11001111b
-	db 0
-GDT_END:
-
-protected_main:
-	[bits 32]
-	
-	mov ax, 010h
-	mov ds, ax
-	mov ss, ax
-	
-	;print something to test
-
-	mov ah, 0x0a
-	mov esi, messageText
-	call puts32
-
-	hlt	
-
-;prints a string
-; Params:
-;	- ds:esi pointer to start of string
-;	- ah color of text
-
-puts32:
-	[bits 32]
-	;save regsiters which are going to be modified
-	push esi
-	push eax
-	push ebx
-
-	mov ebx, 0xb8000
-
-.loop:
-	lodsb	;load i62nto al
-	or al, al			;check if next char is null
-	jz .done
-
-	;call bios interupt
-
-	mov [ebx], ax
-
-	add ebx, 2
-
-	jmp .loop
-
-;return fromputs
-.done:
-	pop ebx
-	pop eax
-	pop esi
-	ret
-	
-
-	
-messageText: db 'hello! loading kernelaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 0
-times 512-($-second_stage_start) db 0
